@@ -16,8 +16,8 @@ class Todo:
     def __init__(self, task):
         self.task = task
         self.done = False
-        self.id = getTodoData().id + 1
-        # self.createDate = datetime.now()
+        self.id = getTodoData().id
+        self.createDate = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 def addTask(task):
     todoData = getTodoData()
