@@ -1,18 +1,5 @@
 {
     "id": 2,
     "tasks": [],
-    "completed": [
-        {
-            "task": "4afdg",
-            "done": true,
-            "id": 0,
-            "createDate": "2022-01-17 17:36:37"
-        },
-        {
-            "task": "hello",
-            "done": true,
-            "id": 1,
-            "createDate": "2022-01-17 17:36:53"
-        }
-    ]
+    "completed": []
 }
