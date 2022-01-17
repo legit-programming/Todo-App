@@ -35,7 +35,14 @@ def removeTask(id):
 def main():
     print("Legit Programming Todo-App!\n")
     print("(A)dd Todo, (V)iew Todos, (M)ark Todo, (U)pdate Todo\n")
-    print("Enter a command: ")
+    
+    while (True):
+        command = input("> ")
+        if command == "help":
+            print("(A)dd Todo, (V)iew Todos, (M)ark Todo, (U)pdate Todo\n")
+        elif command == "exit":
+            print("Exiting...")
+            break
 
 if __name__ == "__main__":
     main()
