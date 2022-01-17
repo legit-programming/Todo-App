@@ -5,7 +5,6 @@ def getTodoData():
     # Read the todo data
     with open("todo.json") as file:
         data = load(file, object_hook=lambda d: SimpleNamespace(**d))
-    
     return data
 
 def setTodoData(data):
@@ -20,6 +19,14 @@ class Todo:
 
 def addTask(task):
     setTodoData(getTodoData().append(Todo(task)))
+
+def removeTask(id):
+    todoData = getTodoData()
+    for i, o in enumerate(todoData):
+        if o.id == id:
+            del todoData[i]
+            break
+    setTodoData(todoData)
 
 def main():
     print("Legit Programming Todo-App!\n")
