@@ -16,12 +16,13 @@ class Todo:
     def __init__(self, task):
         self.task = task
         self.done = False
-        self.id = getTodoData().id + 1
-        self.createDate = datetime.now()
+        self.id = getTodoData().id
+        self.createDate = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 def addTask(task):
     todoData = getTodoData()
     todoData.tasks.append(Todo(task))
+    todoData.id += 1
     setTodoData(todoData)
 
 def removeTask(id):
@@ -34,8 +35,25 @@ def removeTask(id):
 
 def main():
     print("Legit Programming Todo-App!\n")
-    print("(A)dd Todo, (V)iew Todos, (M)ark Todo, (U)pdate Todo\n")
-    print("Enter a command: ")
+    print("(a)dd Todo, (v)iew Todos, (m)ark Todo, (u)pdate Todo\n")
+    
+    while (True):
+        command = input("> ")
+        if command == "help":
+            print("(a)dd Todo, (v)iew Todos, (m)ark Todo, (u)pdate Todo\n")
+        elif command == "a":
+            task = input("Task: ")
+            addTask(task)
+        elif command == "r":
+            id = int(input("ID: "))
+            removeTask(id)
+        elif command == "exit":
+            print("Exiting...")
+            break
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("\nExiting...")
+        exit()
