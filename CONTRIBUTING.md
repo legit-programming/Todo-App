@@ -1,2 +1,2 @@
 # Contributing
-### This project is managed by **Legit programming** (https://discord.st/Legit_Programming). To contribute, it is recommended to join this discord server, but it is not  requirement. Contributions are open, feel free to open a pull reqest!
+### This project is managed by **Legit programming** (https://discord.st/Legit_Programming). To contribute, it is recommended to join this discord server, but it is not  requirement. Contributions are open, feel free to [fork](https://github.com/legit-programming/Todo-App/network/members) and open a [pull reqest](https://github.com/legit-programming/Todo-App/pulls)!
