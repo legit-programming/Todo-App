@@ -17,11 +17,12 @@ class Todo:
         self.task = task
         self.done = False
         self.id = getTodoData().id + 1
-        self.createDate = datetime.now()
+        # self.createDate = datetime.now()
 
 def addTask(task):
     todoData = getTodoData()
     todoData.tasks.append(Todo(task))
+    todoData.id += 1
     setTodoData(todoData)
 
 def removeTask(id):
@@ -34,12 +35,18 @@ def removeTask(id):
 
 def main():
     print("Legit Programming Todo-App!\n")
-    print("(A)dd Todo, (V)iew Todos, (M)ark Todo, (U)pdate Todo\n")
+    print("(a)dd Todo, (v)iew Todos, (m)ark Todo, (u)pdate Todo\n")
     
     while (True):
         command = input("> ")
         if command == "help":
-            print("(A)dd Todo, (V)iew Todos, (M)ark Todo, (U)pdate Todo\n")
+            print("(a)dd Todo, (v)iew Todos, (m)ark Todo, (u)pdate Todo\n")
+        elif command == "a":
+            task = input("Task: ")
+            addTask(task)
+        elif command == "r":
+            id = int(input("ID: "))
+            removeTask(id)
         elif command == "exit":
             print("Exiting...")
             break
