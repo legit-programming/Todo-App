@@ -32,6 +32,20 @@ def removeTask(id):
         if o.id == id:
             del todoData.tasks[i]
             break
+    for i, o in enumerate(todoData.completed):
+        if o.id == id:
+            del todoData.tasks[i]
+            break
+    setTodoData(todoData)
+
+def completeTask(id):
+    todoData = getTodoData()
+    for i, o in enumerate(todoData.tasks):
+        if o.id == id:
+            todoData.tasks[i].done = True
+            todoData.completed.append(todoData.tasks[i])
+            del todoData.tasks[i]
+            break
     setTodoData(todoData)
 
 def main():
@@ -39,6 +53,7 @@ def main():
     commands = [
         {"name": "add", "description": "Add a task", "alias": ["a"], "function": lambda: addTask(input("Task: "))},
         {"name": "remove", "description": "Remove a task", "alias": ["r"], "function": lambda: removeTask(int(input("ID: ")))},
+        {"name": "complete", "description": "Complete a task", "alias": ["c", "resolve"], "function": lambda: completeTask(int(input("ID: ")))},
     ]
     
     while (True):
