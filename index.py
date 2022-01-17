@@ -1,3 +1,4 @@
+from ast import alias
 from json import load, dump
 from types import SimpleNamespace
 from datetime import datetime
@@ -35,18 +36,24 @@ def removeTask(id):
 
 def main():
     print("Legit Programming Todo-App!\n")
-    print("(a)dd Todo, (v)iew Todos, (m)ark Todo, (u)pdate Todo\n")
+    commands = [
+        {"name": "add", "description": "Add a task", "alias": ["a"], "function": lambda: addTask(input("Task: "))},
+        {"name": "remove", "description": "Remove a task", "alias": ["r"], "function": lambda: removeTask(int(input("ID: ")))},
+    ]
     
     while (True):
         command = input("> ")
+
+        # Check for command.
+        for i in commands:
+            if command in i["alias"] or command == i["name"]:
+                i["function"]()
+                break
+        
+        # Check for help and exit.
         if command == "help":
-            print("(a)dd Todo, (v)iew Todos, (m)ark Todo, (u)pdate Todo\n")
-        elif command == "a":
-            task = input("Task: ")
-            addTask(task)
-        elif command == "r":
-            id = int(input("ID: "))
-            removeTask(id)
+            for i in commands:
+                print(f"{i['name']}: {i['description']}")
         elif command == "exit":
             print("Exiting...")
             break
