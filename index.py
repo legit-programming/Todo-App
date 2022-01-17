@@ -12,6 +12,15 @@ def setTodoData(data):
     with open("todo.json", "w") as file:
         dump(data, file, default=lambda o: o.__dict__, indent=4, ensure_ascii=False)
 
+class Todo:
+    def __init__(self, task):
+        self.task = task
+        self.done = False
+        self.id = len(getTodoData()) + 1
+
+def addTask(task):
+    setTodoData(getTodoData().append(Todo(task)))
+
 def main():
     print("Legit Programming Todo-App!\n")
     print("(A)dd Todo, (V)iew Todos, (M)ark Todo, (U)pdate Todo")
