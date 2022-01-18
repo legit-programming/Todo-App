@@ -1,9 +1,11 @@
 print("Initializing checks")
 
+import json
+import os
 import sys
+from types import SimpleNamespace
 sys.path.append('./task')
 from taskManager import commands
-from todoData import getTodoData
 
 # Check for duplicate commands.
 print("Checking for duplicate commands\n")
@@ -20,21 +22,22 @@ for i in commands:
 
 # Check for bad json.
 print("Checking todo.json for unnecessary data\n")
-todoData = getTodoData()
-print(todoData)
+with open(os.path.dirname(os.path.realpath(__file__)) + ".\\todo.json") as file:
+    todoData = json.load(file, object_hook=lambda d: SimpleNamespace(**d))
+    print(todoData)
 
-print("Checking id\n")
-if todoData.id != 0:
-    raise Exception(f"ID is not 0 (todo.json): {todoData.id}")
+    print("Checking id\n")
+    if todoData.id != 0:
+        raise Exception(f"ID is not 0 (todo.json): {todoData.id}")
 
-print("Checking tasks\n")
-if len(todoData.tasks):
-    raise Exception(f"Tasks is not empty (todo.json): {todoData.tasks}")
+    print("Checking tasks\n")
+    if len(todoData.tasks):
+        raise Exception(f"Tasks is not empty (todo.json): {todoData.tasks}")
 
-print("Checking completed\n")
-if len(todoData.completed):
-    raise Exception(f"Completed is not empty (todo.json): {todoData.completedTasks}")
+    print("Checking completed\n")
+    if len(todoData.completed):
+        raise Exception(f"Completed is not empty (todo.json): {todoData.completedTasks}")
 
-print("todo.json is clean\n")
+    print("todo.json is clean\n")
 
-print("Checks completed")
+    print("Checks completed")
