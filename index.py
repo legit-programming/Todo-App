@@ -17,7 +17,7 @@ def main():
         # Check for help and exit.
         if command == "help" or command == "h":
             for i in commands:
-                print(f"{i['name']}: {i['description']}")
+                print(f"({i['alias'][0]}) {i['name']}: {i['description']}")
         elif command == "exit" or command == "e":
             print("Exiting...")
             break
