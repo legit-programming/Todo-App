@@ -3,7 +3,7 @@ sys.path.append('./task')
 from taskManager import commands
 
 def main():
-    print("Legit Programming Todo-App\n")
+    print("Legit Programming Todo-App\n(q) exit: exit the app")
     for i in commands:
         print(f"({i['alias'][0]}) {i['name']}: {i['description']}")
     print("")
@@ -30,7 +30,7 @@ def main():
             else:
                 for i in commands:
                     print(f"({i['alias'][0]}) {i['name']}: {i['description']}")
-        elif command == "exit" or command == "e":
+        elif command == "exit" or command == "q":
             print("Exiting...")
             break
 
