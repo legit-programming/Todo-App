@@ -12,7 +12,10 @@ commands = [
         "function": lambda: addTask(input("Task: "), input("Description: "), input("(0 <= integer <= 4) Priority: "))
     },
     {
-        "name": "remove", "description": "Remove a task", "alias": ["r"], "function": lambda: removeTask(int(input("ID: ")))},
+        "name": "remove",
+        "description": "Remove a task",
+        "alias": ["r"],
+        "function": lambda: removeTask(input("(integer) ID: "))},
     {
         "name": "complete",
         "description": "Complete a task",
