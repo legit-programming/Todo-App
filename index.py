@@ -11,7 +11,7 @@ def main():
     while True:
         print("")
         args = input("> ").split(" ")
-        command = args.pop(0)
+        command = args.pop(0).lower()
         print("")
 
         # Check for command.
