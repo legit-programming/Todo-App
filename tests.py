@@ -1,6 +1,5 @@
 print("Initializing checks")
 
-import numpy
 import sys
 sys.path.append('./task')
 from taskManager import commands
@@ -13,9 +12,11 @@ for i in commands:
 
     for j, o in enumerate(commands):
         print("comparing " + i["name"] + " and " + o["name"])
+        
         if o["name"] != i["name"]:
-            if numpy.array_equal(i["alias"], o["alias"]):
-                raise Exception(f"Duplicate alias: {i['alias']} in {i['name']} and {o['name']}")
+            for k in i["alias"]:
+                if i in o["alias"]:
+                    raise Exception(f"Duplicate alias: {k} in {i['name']} and {o['name']}")
 
 # Check for bad json.
 print("Checking todo.json for unnecessary data\n")
