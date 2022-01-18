@@ -13,7 +13,7 @@ for i in commands:
     print(i)
 
     for j, o in enumerate(commands):
-        print("comparing " + i["name"] + " and " + o["name"])
+        print("comparing: " + i["name"] + " and " + o["name"])
         
         if o["name"] != i["name"]:
             for k in i["alias"]:
