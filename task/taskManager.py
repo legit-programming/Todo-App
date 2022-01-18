@@ -44,7 +44,7 @@ commands = [
     {
         "name": "list",
         "description": "List the active tasks",
-        "alias": ["l"],
+        "alias": ["l", "ls"],
         "help": "(string) sort by: [(p) priority | (d) date | (n) name]\n(string) direction: [(a) ascending | (d) descending]",
         "function": lambda: listTasks(input("Sort by: "), input("Direction: "))
     }
