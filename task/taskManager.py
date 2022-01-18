@@ -15,18 +15,19 @@ commands = [
         "name": "remove",
         "description": "Remove a task",
         "alias": ["r"],
-        "function": lambda: removeTask(input("(integer) ID: "))},
+        "function": lambda: removeTask(input("(integer) ID: "))
+    },
     {
         "name": "complete",
         "description": "Complete a task",
         "alias": ["c", "resolve"],
-        "function": lambda: completeTask(int(input("ID: ")))
+        "function": lambda: completeTask(input("(integer) ID: "))
     },
     {
         "name": "uncomplete",
         "description": "Uncomplete a task",
         "alias": ["u", "incomplete"],
-        "function": lambda: uncompleteTask(int(input("ID: ")))
+        "function": lambda: uncompleteTask(input("(integer) ID: "))
     },
     {
         "name": "list",
