@@ -28,3 +28,5 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("\nExiting...")
         exit()
+    except EOFError:
+        pass
