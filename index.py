@@ -3,10 +3,16 @@ sys.path.append('./task')
 from taskManager import commands
 
 def main():
-    print("Legit Programming Todo-App\n")
-    
-    while (True):
-        command = input("> ")
+    print("Legit Programming Todo-App\n(q) exit: exit the app")
+    for i in commands:
+        print(f"({i['alias'][0]}) {i['name']}: {i['description']}")
+    print("")
+
+    while True:
+        print("")
+        args = input("> ").split(" ")
+        command = args.pop(0)
+        print("")
 
         # Check for command.
         for i in commands:
@@ -16,9 +22,15 @@ def main():
         
         # Check for help and exit.
         if command == "help" or command == "h":
-            for i in commands:
-                print(f"({i['alias'][0]}) {i['name']}: {i['description']}")
-        elif command == "exit" or command == "e":
+            if len(args):
+                for i, o in enumerate(commands):
+                    if o["name"] == args[0]:
+                        print(f"{o['name']}:\n{o['help']}")
+                        break
+            else:
+                for i in commands:
+                    print(f"({i['alias'][0]}) {i['name']}: {i['description']}")
+        elif command == "exit" or command == "q":
             print("Exiting...")
             break
 
