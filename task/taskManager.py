@@ -9,7 +9,7 @@ commands = [
         "name": "add",
         "description": "Add a task",
         "alias": ["a"],
-        "function": lambda: addTask(input("Task: "), input("Description: "), int(input("Priority: ")))
+        "function": lambda: addTask(input("Task: "), input("Description: "), input("(0 <= integer <= 4) Priority: "))
     },
     {
         "name": "remove", "description": "Remove a task", "alias": ["r"], "function": lambda: removeTask(int(input("ID: ")))},
