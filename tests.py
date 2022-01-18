@@ -22,7 +22,7 @@ for i in commands:
 
 # Check for bad json.
 print("Checking todo.json for unnecessary data\n")
-with open(os.path.dirname(os.path.realpath(__file__)) + ".\\todo.json") as file:
+with open(os.path.dirname(os.path.realpath(__file__)) + "/todo.json") as file:
     todoData = json.load(file, object_hook=lambda d: SimpleNamespace(**d))
     print(todoData)
 
