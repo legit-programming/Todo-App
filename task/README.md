@@ -14,5 +14,11 @@ import FUNCTION from FILE # Import the commands function.
 
 commands = [
     # ...Other commands
-    {"name": "NAME", "description": "DESCRIPTION", "alias": ["ALIAS"], "function": lambda: FUNCTION(ARGUMENTS)}
+    {
+        "name": "NAME",
+        "description": "DESCRIPTION",
+        "alias": ["ALIAS"],
+        "help": "HELP_INFORMATION",
+        "function": lambda: FUNCTION(ARGUMENTS)
+    }
 ]
