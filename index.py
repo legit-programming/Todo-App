@@ -15,10 +15,10 @@ def main():
                 break
         
         # Check for help and exit.
-        if command == "help":
+        if command == "help" or command == "h":
             for i in commands:
-                print(f"{i['name']}: {i['description']}")
-        elif command == "exit":
+                print(f"({i['alias'][0]}) {i['name']}: {i['description']}")
+        elif command == "exit" or command == "e":
             print("Exiting...")
             break
 
@@ -28,3 +28,5 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("\nExiting...")
         exit()
+    except EOFError:
+        pass
