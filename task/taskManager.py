@@ -9,7 +9,7 @@ commands = [
     {
         "name": "add",
         "description": "Add a task",
-        "alias": ["a"],
+        "alias": ["a", "new"],
         "help": "(string) Task: [name of the task]\n(string) Description: [description of the task]\n(0 <= integer <= 4) Priority: [priority of the task]",
         "function": lambda: addTask(input("Task: "), input("Description: "), input("Priority: "))
     },
