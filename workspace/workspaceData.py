@@ -5,12 +5,12 @@ import os
 
 def getTodoData():
     # Read the todo data
-    with open(os.path.dirname(os.path.realpath(__file__)) + "\\..\\todo.json") as file:
+    with open(os.path.dirname(os.path.realpath(__file__)) + "/../todo.json") as file:
         data = json.load(file, object_hook=lambda d: SimpleNamespace(**d))
     return data
 
 def setTodoData(data):
-    with open(os.path.dirname(os.path.realpath(__file__)) + "\\..\\todo.json", "w") as file:
+    with open(os.path.dirname(os.path.realpath(__file__)) + "/../todo.json", "w") as file:
         json.dump(data, file, default=lambda o: o.__dict__, indent=4, ensure_ascii=False)
 
 class workspace:
