@@ -16,7 +16,6 @@ def setTodoData(data):
 class workspace:
     def __init__(self, name):
         self.name = name
-        self.todo = []
         self.id = 0
         self.tasks = []
         self.completed = []
