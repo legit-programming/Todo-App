@@ -1,4 +1,4 @@
-from todoData import getTodoData, setTodoData, Todo
+from todoData import getTodoData, setTodoData, Todo, os
 
 def addTask(task, description, priority):
     if not task:
@@ -19,10 +19,9 @@ def addTask(task, description, priority):
 
     todo = Todo(task, description, priority)
 
-    todoData = getTodoData()
+    index, todoData = getTodoData(os.environ["workspace"])
     todoData.tasks.append(todo)
     todoData.id += 1
-
+    setTodoData(todoData, index)
+    
     print(f"\n[CREATED] <{todo.createDate}> ({todo.priority}) {todo.task.capitalize()} {todo.description}")
-
-    setTodoData(todoData)

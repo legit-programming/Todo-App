@@ -1,4 +1,4 @@
-from todoData import getTodoData, setTodoData
+from todoData import getTodoData, setTodoData, os
 
 def completeTask(id):
     if "-" not in id and "." not in id and id.isdigit():
@@ -7,7 +7,7 @@ def completeTask(id):
         print("Invalid id.")
         return
 
-    todoData = getTodoData()
+    index, todoData = getTodoData(os.environ["workspace"])
     
     for i, o in enumerate(todoData.tasks):
         if o.id == id:
@@ -16,4 +16,4 @@ def completeTask(id):
             del todoData.tasks[i]
             break
 
-    setTodoData(todoData)
+    setTodoData(todoData, index)

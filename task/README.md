@@ -6,7 +6,7 @@
 * `todo.json` - The json format data for the tasks.
 ##### Import functions for getting and setting the `todo.json` file:
 ```python
-from todoData import getTodoData, setTodoData, Todo
+from todoData import getTodoData, setTodoData, Todo, os
 ```
 ##### Adding a command in `./taskManager.py`:
 ```python
