@@ -1,4 +1,4 @@
-from todoData import getTodoData, setTodoData
+from todoData import getTodoData, setTodoData, os
 
 def editTask(id, name, description, priority):
     if "-" not in id and "." not in id and id.isdigit():
@@ -17,7 +17,7 @@ def editTask(id, name, description, priority):
         print("Invalid priority.")
         return
 
-    todoData = getTodoData()
+    index, todoData = getTodoData(os.environ["workspace"])
     
     for i, o in enumerate(todoData.tasks):
         if o.id == id:
@@ -33,4 +33,4 @@ def editTask(id, name, description, priority):
             todoData.tasks[i].priority = priority
             break
 
-    setTodoData(todoData)
+    setTodoData(todoData, index)

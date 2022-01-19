@@ -1,4 +1,4 @@
-from todoData import getTodoData
+from todoData import getTodoData, os
 
 def listTasks(sortBy, direction):
     if direction == "up":
@@ -8,7 +8,7 @@ def listTasks(sortBy, direction):
     else:
         direction = True
 
-    todoData = getTodoData()
+    todoData = getTodoData(os.environ["workspace"])
     if sortBy == "priority":
         todoData.tasks.sort(key=lambda x: x.priority, reverse=direction)
     elif sortBy == "date":
