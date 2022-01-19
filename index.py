@@ -3,15 +3,14 @@ sys.path.append('./task')
 from taskManager import commands
 
 def main():
-    print("Legit Programming Todo-App\n(q) exit: exit the app")
+    print("\nLegit Programming Todo-App\n\n(q) exit: exit the app")
     for i in commands:
         print(f"({i['alias'][0]}) {i['name']}: {i['description']}")
-    print("")
 
     while True:
         print("")
         args = input("> ").split(" ")
-        command = args.pop(0)
+        command = args.pop(0).lower()
         print("")
 
         # Check for command.

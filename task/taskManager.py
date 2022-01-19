@@ -9,7 +9,7 @@ commands = [
     {
         "name": "add",
         "description": "Add a task",
-        "alias": ["a"],
+        "alias": ["a", "new"],
         "help": "(string) Task: [name of the task]\n(string) Description: [description of the task]\n(0 <= integer <= 4) Priority: [priority of the task]",
         "function": lambda: addTask(input("Task: "), input("Description: "), input("Priority: "))
     },
@@ -44,7 +44,7 @@ commands = [
     {
         "name": "list",
         "description": "List the active tasks",
-        "alias": ["l"],
+        "alias": ["l", "ls"],
         "help": "(string) sort by: [(p) priority | (d) date | (n) name]\n(string) direction: [(a) ascending | (d) descending]",
         "function": lambda: listTasks(input("Sort by: "), input("Direction: "))
     }
