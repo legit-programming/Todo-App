@@ -36,7 +36,7 @@ def main():
             if len(args):
                 for i, o in enumerate(workspaceManager.commands + taskManager.commands):
                     if o["name"] == args[0]:
-                        print(f"{o['name']}:\n{o['help']}")
+                        print(f"{'(' + (') ('.join(o['alias']) or ' ') + ')' } {o['name']}: {o['description']}\n{o['help']}")
                         break
             else:
                 print("(q) exit: exit the app\n(h) Help information")
