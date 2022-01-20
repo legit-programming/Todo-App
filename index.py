@@ -1,7 +1,7 @@
 import sys
 import os
-sys.path.append('./task')
-sys.path.append('./workspace')
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + './task')
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + './workspace')
 import taskManager
 import workspaceManager
 
