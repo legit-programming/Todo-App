@@ -2,8 +2,7 @@ from todoData import getTodoData, setTodoData, Todo, os
 
 def addTask(task, description, priority):
     if not task:
-        print("Task name can not be empty")
-        return
+        return print("Task name can not be empty")
     
     if not priority:
         priority = 0
@@ -11,11 +10,9 @@ def addTask(task, description, priority):
         priority = int(priority)
         
         if priority < 0 or priority > 4:
-            print("Priority must be between 0 and 4.")
-            return
+            return print("Priority must be between 0 and 4.")
     else:
-        print("Invalid priority.")
-        return
+        return print("Invalid priority.")
 
     todo = Todo(task, description, priority)
 
