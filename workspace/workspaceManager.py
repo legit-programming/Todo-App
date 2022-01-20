@@ -28,8 +28,8 @@ commands = [
     {
         "name": "current",
         "description": "Show the current workspace",
-        "alias": ["opend"],
+        "alias": ["opened"],
         "help": "",
-        "function": lambda: print(os.environ["workspace"] or "No workspace opend")
+        "function": lambda: print(os.environ["workspace"] or "No workspace opened")
     }
 ]
