@@ -5,7 +5,7 @@ import os
 
 def getTodoData(workspace):
     # Read the todo data
-    with open(os.path.dirname(os.path.realpath(__file__)) + "\\..\\todo.json") as file:
+    with open(os.path.dirname(os.path.realpath(__file__)) + "/../todo.json") as file:
         data = json.load(file, object_hook=lambda d: SimpleNamespace(**d))
     
     if workspace:
@@ -17,11 +17,13 @@ def getTodoData(workspace):
         return data
 
 def setTodoData(data, index):
-    with open(os.path.dirname(os.path.realpath(__file__)) + "\\..\\todo.json", "w") as file:
+    with open(os.path.dirname(os.path.realpath(__file__)) + "/../todo.json", "w") as file:
         if index:
+            print(index, data)
             todoData = getTodoData()
             todoData[index] = data
             data = todoData
+            print(index, data)
 
         json.dump(data, file, default=lambda o: o.__dict__, indent=4, ensure_ascii=False)
 

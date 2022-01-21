@@ -4,18 +4,15 @@ def editTask(id, name, description, priority):
     if "-" not in id and "." not in id and id.isdigit():
         id = int(id)
     else:
-        print("Invalid id.")
-        return
+        return print("Invalid id.")
 
     if "-" not in priority and "." not in priority and priority.isdigit():
         priority = int(priority)
         
         if priority < 0 or priority > 4:
-            print("Priority must be between 0 and 4.")
-            return
+            return print("Priority must be between 0 and 4.")
     else:
-        print("Invalid priority.")
-        return
+        return print("Invalid priority.")
 
     index, todoData = getTodoData(os.environ["workspace"])
     

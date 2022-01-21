@@ -4,8 +4,7 @@ def uncompleteTask(id):
     if "-" not in id and "." not in id and id.isdigit():
         id = int(id)
     else:
-        print("Invalid id.")
-        return
+        return print("Invalid id.")
 
     index, todoData = getTodoData(os.environ["workspace"])
     
