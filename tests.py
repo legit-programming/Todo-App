@@ -1,13 +1,10 @@
 print("Initializing checks")
 
 from types import SimpleNamespace
-import json
-import os
-import sys
+import json, os, sys
 sys.path.append('./task')
 sys.path.append('./workspace')
-import taskManager
-import workspaceManager
+import taskManager, workspaceManager
 
 # Check for duplicate commands.
 print("Checking for duplicate commands\n")

@@ -1,7 +1,6 @@
 from types import SimpleNamespace
 from datetime import datetime
-import json
-import os
+import json, os
 
 def getTodoData(workspace):
     # Read the todo data
