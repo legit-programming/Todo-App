@@ -8,7 +8,7 @@ def listTasks(sortBy, direction):
     else:
         direction = True
 
-    todoData = getTodoData(os.environ["workspace"])
+    _, todoData = getTodoData(os.environ["workspace"])
     if sortBy == "priority":
         todoData.tasks.sort(key=lambda x: x.priority, reverse=direction)
     elif sortBy == "date":
