@@ -2,7 +2,7 @@ from types import SimpleNamespace
 from datetime import datetime
 import json, os
 
-def getTodoData(workspace):
+def getTodoData(workspace = None):
     # Read the todo data
     with open(os.path.dirname(os.path.realpath(__file__)) + "/../todo.json") as file:
         data = json.load(file, object_hook=lambda d: SimpleNamespace(**d))
@@ -17,12 +17,10 @@ def getTodoData(workspace):
 
 def setTodoData(data, index):
     with open(os.path.dirname(os.path.realpath(__file__)) + "/../todo.json", "w") as file:
-        if index:
-            print(index, data)
+        if index != None:
             todoData = getTodoData()
             todoData[index] = data
             data = todoData
-            print(index, data)
 
         json.dump(data, file, default=lambda o: o.__dict__, indent=4, ensure_ascii=False)
 
