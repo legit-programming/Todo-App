@@ -2,8 +2,8 @@ print("Initializing checks")
 
 from types import SimpleNamespace
 import json, os, sys
-sys.path.append('./task')
-sys.path.append('./workspace')
+sys.path.append('/task')
+sys.path.append('/workspace')
 import taskManager, workspaceManager
 
 # Check for duplicate commands.

@@ -1,6 +1,6 @@
 import sys, os
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + './task')
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + './workspace')
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + '/task')
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + '/workspace')
 import taskManager, workspaceManager
 
 os.environ["workspace"] = ""
