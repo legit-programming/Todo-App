@@ -4,33 +4,34 @@ import json, os, sys, unittest
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + '/task')
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + '/workspace')
 
-import taskManager, workspaceManager
+import taskManager as TM, workspaceManager as WM
 
-commands = workspaceManager.commands + taskManager.commands
+commands = WM.commands + TM.commands
 
 class Commands(unittest.TestCase):
     def test_commandAttributes(self):
         for i in commands:
-            self.assertIn("name", i)
-            self.assertIn("description", i)
-            self.assertIn("alias", i)
-            self.assertIn("help", i)
-            self.assertIn("function", i)
-            self.assertIn("source", i)
+            self.assertIn("name", i, "No command name")
+            self.assertIn("description", i, "No command description")
+            self.assertIn("alias", i, "No command alias")
+            self.assertIn("help", i, "No command help")
+            self.assertIn("function", i, "No command function")
+            self.assertIn("source", i, "No command function")
     
     def test_commandFunctions(self):
         for i in commands:
-            self.assertTrue(callable(i["function"]))
+            self.assertTrue(callable(i["function"]), "Function not callable")
+            self.assertTrue(callable(i["source"]), "Source not callable")
 
     def test_duplicateNames(self):
-        self.assertEqual(sum(1 for i in commands for j in commands if i["name"] == j["name"]), len(commands))
+        self.assertEqual(sum(1 for i in commands for j in commands if i["name"] == j["name"]), len(commands), "Duplicate command name found")
 
 class Data(unittest.TestCase):
     def test_emptyData(self):
         with open(os.path.dirname(os.path.realpath(__file__)) + "/todo.json") as file:
             data = json.load(file, object_hook=lambda d: SimpleNamespace(**d))
-            self.assertTrue(isinstance(data, list))
-            self.assertEqual(len(data), 0)
+            self.assertTrue(isinstance(data, list), "Data is not a list")
+            self.assertEqual(len(data), 0, "Data must be removed from the list")
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
