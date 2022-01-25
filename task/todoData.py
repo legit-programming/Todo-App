@@ -2,7 +2,7 @@ from types import SimpleNamespace
 from datetime import datetime
 import json, os
 
-def getTodoData(workspace = None):
+def getTodoData(workspace=None):
     # Read the todo data
     with open(os.path.dirname(os.path.realpath(__file__)) + "/../todo.json") as file:
         data = json.load(file, object_hook=lambda d: SimpleNamespace(**d))
