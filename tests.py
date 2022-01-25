@@ -1,5 +1,4 @@
-from types import SimpleNamespace
-import json, os, sys, unittest
+import os, sys, json, types, unittest
 
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + '/task')
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + '/workspace')
@@ -29,7 +28,7 @@ class Commands(unittest.TestCase):
 class Data(unittest.TestCase):
     def test_emptyData(self):
         with open(os.path.dirname(os.path.realpath(__file__)) + "/todo.json") as file:
-            data = json.load(file, object_hook=lambda d: SimpleNamespace(**d))
+            data = json.load(file, object_hook=lambda d: types.SimpleNamespace(**d))
             self.assertTrue(isinstance(data, list), "Data is not a list")
             self.assertEqual(len(data), 0, "Data must be removed from the list")
 
