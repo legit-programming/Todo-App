@@ -16,6 +16,7 @@ def getTodoData(workspace=None):
         return data
 
 def setTodoData(data, index):
+    # Write the todo data
     with open(os.path.dirname(os.path.realpath(__file__)) + "/../todo.json", "w") as file:
         if index != None:
             todoData = getTodoData()
