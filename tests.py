@@ -1,34 +1,36 @@
-print("Initializing checks")
+import os, sys, json, types, unittest
 
-from types import SimpleNamespace
-import json
-import os
-import sys
-sys.path.append('./task')
-sys.path.append('./workspace')
-import taskManager
-import workspaceManager
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + '/task')
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + '/workspace')
 
-# Check for duplicate commands.
-print("Checking for duplicate commands\n")
-for i in workspaceManager.commands + taskManager.commands:
-    print(i)
+import taskManager as TM, workspaceManager as WM
 
-    for j, o in enumerate(workspaceManager.commands + taskManager.commands):
-        print("comparing: " + i["name"] + " and " + o["name"])
-        
-        if o["name"] != i["name"]:
-            for k in i["alias"]:
-                if i in o["alias"]:
-                    raise Exception(f"Duplicate alias: {k} in {i['name']} and {o['name']}")
+commands = WM.commands + TM.commands
 
-# Check for bad json.
-print("Checking todo.json for unnecessary data\n")
-with open(os.path.dirname(os.path.realpath(__file__)) + "/todo.json") as file:
-    todoData = json.load(file, object_hook=lambda d: SimpleNamespace(**d))
-    print(todoData)
+class Commands(unittest.TestCase):
+    def test_commandAttributes(self):
+        for i in commands:
+            self.assertIn("name", i, "No command name")
+            self.assertIn("description", i, "No command description")
+            self.assertIn("alias", i, "No command alias")
+            self.assertIn("help", i, "No command help")
+            self.assertIn("function", i, "No command function")
+            self.assertIn("source", i, "No command function")
+    
+    def test_commandFunctions(self):
+        for i in commands:
+            self.assertTrue(callable(i["function"]), "Function not callable")
+            self.assertTrue(callable(i["source"]), "Source not callable")
 
-    if len(todoData):
-        raise Exception("Array in todo.json must be empty")
+    def test_duplicateNames(self):
+        self.assertEqual(sum(1 for i in commands for j in commands if i["name"] == j["name"]), len(commands), "Duplicate command name found")
 
-print("Checks completed")
+class Data(unittest.TestCase):
+    def test_emptyData(self):
+        with open(os.path.dirname(os.path.realpath(__file__)) + "/todo.json") as file:
+            data = json.load(file, object_hook=lambda d: types.SimpleNamespace(**d))
+            self.assertTrue(isinstance(data, list), "Data is not a list")
+            self.assertEqual(len(data), 0, "Data must be removed from the list")
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)
