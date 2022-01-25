@@ -9,6 +9,15 @@ import taskManager, workspaceManager
 commands = workspaceManager.commands + taskManager.commands
 
 class Commands(unittest.TestCase):
+    def test_commandAttributes(self):
+        for i in commands:
+            self.assertIn("name", i)
+            self.assertIn("description", i)
+            self.assertIn("alias", i)
+            self.assertIn("help", i)
+            self.assertIn("function", i)
+            self.assertIn("source", i)
+
     def test_duplicateNames(self):
         self.assertEqual(sum(1 for i in commands for j in commands if i["name"] == j["name"]), len(commands))
 
