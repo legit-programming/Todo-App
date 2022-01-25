@@ -17,6 +17,10 @@ class Commands(unittest.TestCase):
             self.assertIn("help", i)
             self.assertIn("function", i)
             self.assertIn("source", i)
+    
+    def test_commandFunctions(self):
+        for i in commands:
+            self.assertTrue(callable(i["function"]))
 
     def test_duplicateNames(self):
         self.assertEqual(sum(1 for i in commands for j in commands if i["name"] == j["name"]), len(commands))
@@ -29,4 +33,4 @@ class Data(unittest.TestCase):
             self.assertEqual(len(data), 0)
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(verbosity=2)
