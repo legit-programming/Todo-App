@@ -18,4 +18,4 @@ jobs:
       with:
         python-version: '3.x'
         architecture: 'x64'
-    - run: python tests.py
+    - run: python tests.py -v
