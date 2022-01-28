@@ -1,6 +1,8 @@
 import sys, os
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + '/task')
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + '/workspace')
+
+for i in ["/task", "/workspace"]:
+    sys.path.append(os.path.dirname(os.path.realpath(__file__)) + i)
+
 import taskManager, workspaceManager
 
 os.environ["workspace"] = ""
@@ -47,9 +49,6 @@ def main():
 if __name__ == "__main__":
     try:
         main()
-    except KeyboardInterrupt:
-        print("\nExiting...")
-        exit()
-    except EOFError:
+    except KeyboardInterrupt or EOFError:
         print("\nExiting...")
         exit()
