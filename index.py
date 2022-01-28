@@ -8,8 +8,8 @@ import taskManager, workspaceManager, programManager
 os.environ["workspace"] = ""
 
 def main():
-    print("\nLegit Programming Todo-App\n\n(q) exit: exit the app\n(h) Help information")
-    for i in workspaceManager.commands + taskManager.commands:
+    print("\nLegit Programming Todo-App\n\n")
+    for i in workspaceManager.commands + taskManager.commands + programManager.commands:
         print(f"({i['alias'][0] if len(i['alias']) and len(i['alias'][0]) == 1 else ' '}) {i['name']}: {i['description']}")
 
     while True:
