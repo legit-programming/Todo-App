@@ -1,9 +1,9 @@
 import sys, os
 
-for i in ["/task", "/workspace"]:
+for i in ["/task", "/workspace", "/program"]:
     sys.path.append(os.path.dirname(os.path.realpath(__file__)) + i)
 
-import taskManager, workspaceManager
+import taskManager, workspaceManager, programManager
 
 os.environ["workspace"] = ""
 
@@ -31,20 +31,10 @@ def main():
                 i["function"]()
                 break
         
-        # Check for help and exit.
-        if command == "help" or command == "h":
-            if len(args):
-                for i, o in enumerate(workspaceManager.commands + taskManager.commands):
-                    if o["name"] == args[0]:
-                        print(f"{'(' + (') ('.join(o['alias']) or ' ') + ')' } {o['name']}: {o['description']}\n{o['help']}")
-                        break
-            else:
-                print("(q) exit: exit the app\n(h) Help information")
-                for i in workspaceManager.commands + taskManager.commands:
-                    print(f"({i['alias'][0] if len(i['alias']) and len(i['alias'][0]) == 1 else ' '}) {i['name']}: {i['description']}")
-        elif command == "exit" or command == "q":
-            print("Exiting...")
-            break
+        for i in programManager.commands:
+            if command in i["alias"] or command == i["name"]:
+                i["function"]()
+                break
 
 if __name__ == "__main__":
     try:
