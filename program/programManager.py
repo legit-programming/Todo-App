@@ -1,5 +1,6 @@
 from help import help
 from quit import quitApp
+from contribute import contribute
 
 commands = [
     {
@@ -17,5 +18,13 @@ commands = [
         "help": "",
         "function": lambda: quitApp(),
         "source": quitApp
+    },
+    {
+        "name": "contribute",
+        "description": "Contribute to the project.",
+        "alias": [],
+        "help": "",
+        "function": lambda: contribute(),
+        "source": contribute
     }
 ]
