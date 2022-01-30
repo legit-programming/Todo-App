@@ -1,6 +1,9 @@
 from todoData import getTodoData, os
 
 def listTasks(sortBy, direction):
+    if not os.environ["workspace"]:
+        return print("No workspace opened.")
+        
     if direction == "up":
         direction = True
     elif direction == "down":

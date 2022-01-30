@@ -1,6 +1,9 @@
 from todoData import getTodoData, setTodoData, os
 
 def completeTask(id):
+    if not os.environ["workspace"]:
+        return print("No workspace opened.")
+        
     if "-" not in id and "." not in id and id.isdigit():
         id = int(id)
     else:

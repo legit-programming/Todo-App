@@ -1,6 +1,9 @@
 from todoData import getTodoData, setTodoData, Todo, os
 
 def addTask(task, description, priority):
+    if not os.environ["workspace"]:
+        return print("No workspace opened.")
+
     if not task:
         return print("Task name can not be empty")
     

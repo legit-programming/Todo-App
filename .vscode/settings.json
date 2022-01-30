@@ -1,6 +1,7 @@
 {
     "python.analysis.extraPaths": [
         "workspace",
-        "task"
+        "task",
+        "program"
     ]
 }
