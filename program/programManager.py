@@ -6,7 +6,7 @@ commands = [
     {
         "name": "help",
         "description": "Show the help information.",
-        "alias": ["h"],
+        "alias": ["h", "?"],
         "help": "",
         "function": lambda: help(input("command: ")),
         "source": help
@@ -14,7 +14,7 @@ commands = [
     {
         "name": "quit",
         "description": "Exit the app.",
-        "alias": ["q"],
+        "alias": ["q", "exit"],
         "help": "",
         "function": lambda: quitApp(),
         "source": quitApp
