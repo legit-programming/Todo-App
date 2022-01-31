@@ -25,6 +25,13 @@ class Commands(unittest.TestCase):
     def test_duplicateNames(self):
         self.assertEqual(sum(1 for i in commands for j in commands if i["name"] == j["name"]), len(commands), "Duplicate command name found")
 
+    def test_duplicateAliases(self):
+        for i in commands:
+            for j in commands:
+                if i["name"] != j["name"]:
+                    for k in i["alias"]:
+                        self.assertNotIn(k, j["alias"], "Duplicate command alias found")
+
 class Data(unittest.TestCase):
     def test_emptyData(self):
         with open(os.path.dirname(os.path.realpath(__file__)) + "/todo.json") as file:
