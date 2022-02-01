@@ -1,11 +1,11 @@
-import os, sys, json, types, unittest
+import sys, os, json, types, unittest
 
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + '/task')
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + '/workspace')
+for i in ["/task", "/workspace", "/program"]:
+    sys.path.append(os.path.dirname(os.path.realpath(__file__)) + i)
 
-import taskManager as TM, workspaceManager as WM
+import taskManager as TM, workspaceManager as WM, programManager as PM
 
-commands = WM.commands + TM.commands
+commands = WM.commands + TM.commands + PM.commands
 
 class Commands(unittest.TestCase):
     def test_commandAttributes(self):
@@ -24,6 +24,13 @@ class Commands(unittest.TestCase):
 
     def test_duplicateNames(self):
         self.assertEqual(sum(1 for i in commands for j in commands if i["name"] == j["name"]), len(commands), "Duplicate command name found")
+
+    def test_duplicateAliases(self):
+        for i in commands:
+            for j in commands:
+                if i["name"] != j["name"]:
+                    for k in i["alias"]:
+                        self.assertNotIn(k, j["alias"], "Duplicate command alias found")
 
 class Data(unittest.TestCase):
     def test_emptyData(self):

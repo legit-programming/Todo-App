@@ -10,7 +10,7 @@ commands = workspaceManager.commands + taskManager.commands + programManager.com
 os.environ["workspace"] = ""
 
 def main():
-    print("\nLegit Programming Todo-App\n\n")
+    print("\nLegit Programming Todo-App\nhttps://github.com/legit-programming/todo-app\n\n")
     for i in commands:
         print(f"({i['alias'][0] if len(i['alias']) and len(i['alias'][0]) == 1 else ' '}) {i['name']}: {i['description']}")
 
